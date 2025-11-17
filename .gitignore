@@ -1,0 +1,5 @@
+/.continue
+/.vscode
+/dist
+/node_modules
+/specs

@@ -1,0 +1,115 @@
+/* Modern CSS Reset */
+* {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 1em;
+}
+
+body > hgroup {
+  margin: 0 auto;
+
+  max-width: 800px;
+  padding: 0 20px;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0.5rem;
+
+  }
+
+  .is-debug & {  
+    /* debug */
+    outline: 1px solid red;
+  }
+}
+
+main {
+  margin: 0 auto;
+
+  max-width: 800px;
+  padding: 0 20px;
+
+  .is-debug & {
+    /* debug */
+    outline: 1px solid red;
+  }
+}
+.snow-toggle {
+  legend {
+    transform: translate(0, -0.15rem)
+  }
+
+  position: sticky;
+  bottom: 10px;
+  margin: 0 auto;
+
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  z-index: 1000;
+
+  label {
+    margin-left: 0.25rem;
+  }
+
+  label:before {
+    content: " ";
+    position: absolute;
+    transform: translate(-0.49rem, 0.15rem);
+    width: .5rem;
+    height: 1rem;
+    cursor: default;
+  }
+
+  .is-debug & {
+    /* debug */
+    outline: 1px solid red;
+
+    legend {
+      outline: 1px solid blue;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color: #ddd;
+    background-color: #424242;
+  }
+
+  a {
+    color: #81aaff;
+
+    &:hover {
+      color: #5596ff;
+    }
+  }
+
+  .snow-toggle {
+    background: rgba(57, 57, 57, 0.8);
+    border: 1px solid #444;
+  }
+}

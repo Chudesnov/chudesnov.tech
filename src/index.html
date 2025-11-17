@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="theme.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sasha Chudesnov&rsquo;s Website</title>
+</head>
+<body>
+    <hgroup>
+        <h1>Sasha Chudesnov</h1>
+
+        <p>Web developer based in Prague, Czech Republic</p>
+    </hgroup>
+
+    <main>
+        <h2>Hi there!</h2>
+
+        <p>
+            I have been working with various web technologies for over 10 years, building products, design systems, and developer tools, and I am always looking to learn new things.
+            If you have a project to discuss with me or just want to chat, feel free to <a href="mailto:sasha@chudesnov.tech">contact me by email</a>
+            or through <a href="https://linkedin.com/in/chudesnov">LinkedIn</a>.
+        </p>
+
+        <p>
+            This website might not look like much, but at least it's no longer an <a target="_blank" ref="noreferrer" href="https://about.me/chudesnov">about.me</a> page I used to pay $79 a year for. Yeah, embarrassing.
+        </p>
+    </main>
+
+    <fieldset class="snow-toggle" hidden>
+        <legend>Snow mode</legend>
+        <input class="snow-toggle__control" type="radio" name="snow" value="none" id="snowfall-none"><label for="snowfall-none">None</label>
+        <br>
+        <input class="snow-toggle__control" type="radio" name="snow" value="snowfall" id="snowfall-snowfall"><label for="snowfall-snowfall">Snowfall</label>
+
+    </fieldset>
+
+    <canvas role="presentation" id="snowCanvas" style="inset: 0; position: fixed; pointer-events: none;"></canvas>
+    <script type="module" src="snow.js"></script>
+
+</body>
+</html>
