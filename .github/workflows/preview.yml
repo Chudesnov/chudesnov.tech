@@ -1,0 +1,46 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      PREVIEW_URL: pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - run: npm install -g pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Deploy preview
+        if: github.event.action != 'closed'
+        run: npx surge dist "https://$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+
+      - name: Tear down preview
+        if: github.event.action == 'closed'
+        run: npx surge teardown "https://$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+
+      - name: Comment with preview URL
+        if: github.event.action == 'opened' || github.event.action == 'reopened'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `**Preview:** https://${{ env.PREVIEW_URL }}`
+            })
