@@ -4,7 +4,7 @@
   "description": "Sasha Chudesnov's Eleventy-based personal blog / website",
   "main": "src/index.html",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1"
+    "@11ty/eleventy": "^3.1.6"
   },
   "scripts": {
     "start": "npx @11ty/eleventy --serve --port=3000 --quiet --incremental",
@@ -15,5 +15,6 @@
   ],
   "packageManager": "pnpm@11.8.0",
   "author": "Aleksandr A. Chudesnov",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "type": "module"
 }
