@@ -15,5 +15,6 @@
   ],
   "packageManager": "pnpm@11.8.0",
   "author": "Aleksandr A. Chudesnov",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "type": "module"
 }

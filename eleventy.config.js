@@ -1,4 +1,4 @@
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/style.css");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
   eleventyConfig.addPassthroughCopy("src/snow.js");
@@ -29,4 +29,4 @@ module.exports = function(eleventyConfig) {
       output: "dist",
     },
   };
-};
+}
