@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+  {% if site.showNav %}
   <header>
     <nav>
       <a href="/">Home</a>
       <a href="/writing/">Writing</a>
     </nav>
   </header>
+  {% endif %}
   <main>
     {{ content | safe }}
   </main>
