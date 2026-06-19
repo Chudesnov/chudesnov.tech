@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ (title + " — ") if title }}Sasha Chudesnov</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/writing/">Writing</a>
+    </nav>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
+  <footer>
+    <a href="mailto:sasha@chudesnov.tech">sasha@chudesnov.tech</a> ·
+    <a href="https://linkedin.com/in/chudesnov">LinkedIn</a>
+  </footer>
+</body>
+</html>
