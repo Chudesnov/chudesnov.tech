@@ -1,6 +1,6 @@
 # Architecture
 
-Eleventy 2.x site. Input: `src/`, output: `dist/`. Package manager: pnpm (v11, declared in `packageManager` field).
+Eleventy 3.x site. Input: `src/`, output: `dist/`. Package manager: pnpm (v11, declared in `packageManager` field).
 
 ## Layouts
 
@@ -46,4 +46,4 @@ Main branch deployment is on statichost.eu and is not configured in this repo.
 
 ## Module system
 
-`eleventy.config.js` and `src/_data/*.js` are currently CommonJS (`module.exports`). See `.agents/tasks/esm-migration.md` for the planned migration.
+`eleventy.config.js` and `src/_data/*.js` use ES Modules (`export default`). `package.json` has `"type": "module"`. New `_data/*.js` files should be authored as ESM from the start.
