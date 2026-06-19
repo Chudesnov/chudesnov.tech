@@ -10,8 +10,8 @@
   {% if site.showNav %}
   <header>
     <nav>
-      {% if page.url == "/" %}<span aria-current="page">Home</span>{% else %}<a href="/">Home</a>{% endif %}
-      {% if "/writing/" in page.url %}<span aria-current="page">Writing</span>{% else %}<a href="/writing/">Writing</a>{% endif %}
+      <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}>Home</a>
+      <a href="/writing/" {% if "/writing/" in page.url %}aria-current="page"{% endif %}>Writing</a>
     </nav>
   </header>
   {% endif %}
