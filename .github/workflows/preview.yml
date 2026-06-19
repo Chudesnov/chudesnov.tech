@@ -21,14 +21,17 @@ jobs:
           node-version: lts/*
           cache: pnpm
 
+      - id: url
+        run: echo "value=https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh" >> $GITHUB_OUTPUT
+
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
       - name: Deploy preview
         if: github.event.action != 'closed'
-        run: npx surge dist "https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh" --token "${{ secrets.SURGE_TOKEN }}"
+        run: npx surge dist "${{ steps.url.outputs.value }}" --token "${{ secrets.SURGE_TOKEN }}"
 
       - name: Tear down preview
         if: github.event.action == 'closed'
-        run: npx surge teardown "https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh" --token "${{ secrets.SURGE_TOKEN }}"
+        run: npx surge teardown "${{ steps.url.outputs.value }}" --token "${{ secrets.SURGE_TOKEN }}"
 
