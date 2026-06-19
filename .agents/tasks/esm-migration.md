@@ -1,7 +1,7 @@
 ---
 id: esm-migration
 name: Migrate to ESM
-status: planned
+status: done
 ---
 
 ## Goal
