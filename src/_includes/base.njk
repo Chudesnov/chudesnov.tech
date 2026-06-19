@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ (title + " — ") if title }}Sasha Chudesnov</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  {% if site.showNav %}
+  <header>
+    <nav>
+      {% for item in nav %}
+        {%- set isCurrent = page.url == item.url or (item.url != "/" and item.url in page.url) %}
+        <a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+  </header>
+  {% endif %}
+  <main>
+    {{ content | safe }}
+  </main>
+  {% if page.url != "/" %}
+  <footer>
+    <a href="mailto:sasha@chudesnov.tech">sasha@chudesnov.tech</a> ·
+    <a href="https://linkedin.com/in/chudesnov">LinkedIn</a>
+  </footer>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+name: PR Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    environment:
+      name: CI
+      url: https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
+
+    env:
+      PREVIEW_URL: https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Deploy preview
+        if: github.event.action != 'closed'
+        run: npx surge dist "$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+
+      - name: Tear down preview
+        if: github.event.action == 'closed'
+        run: npx surge teardown "$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+

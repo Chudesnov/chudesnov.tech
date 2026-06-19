@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    text { fill: #1a1a1a; font-family: system-ui, sans-serif; font-weight: 600; font-size: 18px; letter-spacing: -0.5px; }
+    @media (prefers-color-scheme: dark) { text { fill: #e8e8e4; } }
+  </style>
+  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">SC</text>
+</svg>
