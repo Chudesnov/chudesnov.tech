@@ -1,5 +1,4 @@
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src/theme.css");
   eleventyConfig.addPassthroughCopy("src/style.css");
   eleventyConfig.addPassthroughCopy("src/snow.js");
   eleventyConfig.addPassthroughCopy("src/snow-worker.js");
@@ -20,7 +19,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection("writing", (api) =>
-    api.getFilteredByTag("writing").sort((a, b) => b.date - a.date)
+    api.getFilteredByGlob("src/writing/*.md").sort((a, b) => b.date - a.date)
   );
 
   return {

@@ -10,17 +10,13 @@
   {% if site.showNav %}
   <header>
     <nav>
-      <a href="/">Home</a>
-      <a href="/writing/">Writing</a>
+      {% if page.url == "/" %}<span aria-current="page">Home</span>{% else %}<a href="/">Home</a>{% endif %}
+      {% if "/writing/" in page.url %}<span aria-current="page">Writing</span>{% else %}<a href="/writing/">Writing</a>{% endif %}
     </nav>
   </header>
   {% endif %}
   <main>
     {{ content | safe }}
   </main>
-  <footer>
-    <a href="mailto:sasha@chudesnov.tech">sasha@chudesnov.tech</a> ·
-    <a href="https://linkedin.com/in/chudesnov">LinkedIn</a>
-  </footer>
 </body>
 </html>

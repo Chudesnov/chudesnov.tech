@@ -10,8 +10,6 @@ jobs:
     environment:
       name: CI
       url: https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
-    env:
-      PREVIEW_URL: pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
 
     steps:
       - uses: actions/checkout@v4
@@ -28,9 +26,9 @@ jobs:
 
       - name: Deploy preview
         if: github.event.action != 'closed'
-        run: npx surge dist "https://$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+        run: npx surge dist "https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh" --token "${{ secrets.SURGE_TOKEN }}"
 
       - name: Tear down preview
         if: github.event.action == 'closed'
-        run: npx surge teardown "https://$PREVIEW_URL" --token "${{ secrets.SURGE_TOKEN }}"
+        run: npx surge teardown "https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh" --token "${{ secrets.SURGE_TOKEN }}"
 
