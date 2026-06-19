@@ -6,7 +6,7 @@
   --link:       light-dark(#005fcc, #7aa2f7);
   --link-hover: light-dark(#003a99, #5586e0);
   --border:     light-dark(#ddd, #3a3a3a);
-  --col: 65ch;
+  --col: 65rch;
 }
 
 *, *::before, *::after {
