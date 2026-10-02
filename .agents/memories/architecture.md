@@ -40,7 +40,7 @@ Pages use `layout: base.njk` directly. Posts use `layout: post.njk`, which chain
 
 ## CI / Deployment
 
-PR previews: `.github/workflows/preview.yml` deploys to `https://pr-<N>-chudesnov.surge.sh` via Surge.sh on every push, tears down on close. Requires a GitHub environment named `CI` with a `SURGE_TOKEN` secret. Preview URL is surfaced in the PR via `environment.url` and available in steps as `$PREVIEW_URL`.
+PR previews: `.github/workflows/preview.yml` deploys to `https://pr-<N>-chudesnov.surge.sh` via Surge.sh on every push, tears down on close. Pushes to the `cms-preview` branch (written by the CMS at cms.chudesnov.tech: `main` plus every post's latest draft) deploy to the fixed `https://cms-preview-chudesnov.surge.sh`. Requires a GitHub environment named `CI` with a `SURGE_TOKEN` secret. Preview URL is surfaced in the PR via `environment.url` and available in steps as `$PREVIEW_URL`.
 
 Main branch deployment is on statichost.eu and is not configured in this repo.
 

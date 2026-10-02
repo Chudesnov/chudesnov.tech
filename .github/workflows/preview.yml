@@ -3,16 +3,24 @@ name: PR Preview
 on:
   pull_request:
     types: [opened, synchronize, reopened, closed]
+  # The CMS (cms.chudesnov.tech) mirrors its drafts to this branch.
+  push:
+    branches: [cms-preview]
+
+# The CMS can push several times in a row; only the latest state matters.
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   preview:
     runs-on: ubuntu-latest
     environment:
       name: CI
-      url: https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
+      url: ${{ github.event_name == 'push' && 'https://cms-preview-chudesnov.surge.sh' || format('https://pr-{0}-chudesnov.surge.sh', github.event.pull_request.number) }}
 
     env:
-      PREVIEW_URL: https://pr-${{ github.event.pull_request.number }}-chudesnov.surge.sh
+      PREVIEW_URL: ${{ github.event_name == 'push' && 'https://cms-preview-chudesnov.surge.sh' || format('https://pr-{0}-chudesnov.surge.sh', github.event.pull_request.number) }}
 
     steps:
       - uses: actions/checkout@v4
