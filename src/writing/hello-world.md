@@ -1,8 +1,8 @@
 ---
-title: "First Post"
-date: 2026-10-02
+title: "First"
+date: 2026-10-03
 cmsId: "2"
 templateEngineOverride: md
 ---
 
-Authored i
+
