@@ -47,8 +47,22 @@ body > header {
   text-decoration: none;
 }
 
-.back:hover {
+.back:hover,
+.feed-link:hover {
   color: var(--link);
+}
+
+/* Heading with a small RSS link beside it */
+.section-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 1rem;
+}
+
+.feed-link {
+  color: var(--muted);
+  font-size: 0.875rem;
 }
 
 main {
