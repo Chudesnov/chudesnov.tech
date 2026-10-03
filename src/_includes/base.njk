@@ -8,15 +8,10 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  {# The nav only links to Writing, so it appears once there's something to read. #}
-  {% if collections.writing.length and not site.hideNav %}
+  {# One level up, set per page with `back: { url, label }`. #}
+  {% if back %}
   <header>
-    <nav>
-      {% for item in nav %}
-        {%- set isCurrent = page.url == item.url or (item.url != "/" and item.url in page.url) %}
-        <a href="{{ item.url }}"{% if isCurrent %} aria-current="page"{% endif %}>{{ item.label }}</a>
-      {% endfor %}
-    </nav>
+    <a class="back" href="{{ back.url }}">← {{ back.label }}</a>
   </header>
   {% endif %}
   <main>

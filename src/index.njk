@@ -18,6 +18,17 @@ layout: base.njk
   page I used to pay $79 a year for. Yeah, embarrassing.
 </p>
 
+{% if collections.writing.length and not site.hideNav %}
+<section class="recent" aria-labelledby="recent-writing">
+  <h2 id="recent-writing">Writing</h2>
+  {% set posts = collections.writing.slice(0, 5) %}
+  {% include "post-list.njk" %}
+  {% if collections.writing.length > 5 %}
+  <p><a href="/writing/">All posts</a></p>
+  {% endif %}
+</section>
+{% endif %}
+
 <fieldset class="snow-toggle" hidden>
   <legend>Snow mode</legend>
   <input class="snow-toggle__control" type="radio" name="snow" value="none" id="snowfall-none">
