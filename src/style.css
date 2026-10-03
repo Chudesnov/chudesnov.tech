@@ -80,11 +80,6 @@ h1, h2, h3, h4, p, li, a {
   overflow-wrap: anywhere;
 }
 
-/* Post titles can be long; keep them from towering on narrow screens. */
-article h1 {
-  font-size: clamp(1.6rem, 1.1rem + 2.5vw, 2.25rem);
-}
-
 p {
   text-wrap: pretty;
 }
