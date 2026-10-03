@@ -6,19 +6,19 @@ Eleventy 3.x site. Input: `src/`, output: `dist/`. Package manager: pnpm (v11, d
 
 Two layouts in `src/_includes/`, chained via Eleventy's layout cascade:
 
-- `base.njk` — outer shell: `<head>`, conditional `<header>` + nav, `<main>{{ content | safe }}</main>`, conditional `<footer>` (suppressed on `/` since the home page already contains contact links inline)
-- `post.njk` — sets `layout: base.njk` in its own front matter; wraps content in `<article>` with `<time>` and a `← Writing` back link
+- `base.njk` — outer shell: `<head>`, a `<header>` with a single `← back` link when the page sets `back: { url, label }` in its data (no site-wide nav), `<main>{{ content | safe }}</main>`, conditional `<footer>` (suppressed on `/` since the home page already contains contact links inline)
+- `post.njk` — sets `layout: base.njk` in its own front matter; wraps content in `<article>` with `<time>`. The `← Writing` link comes from `back` in `writing.json`
+- `post-list.njk` — shared `<ul>` of posts (`posts` variable), used by `/writing/` and the home page's recent posts
 
 Pages use `layout: base.njk` directly. Posts use `layout: post.njk`, which chains into base.
 
 ## Data layer (`src/_data/`)
 
-- `site.js` — env-driven config; exposes `site.hideNav` (reads `HIDE_NAV`, defaults `false`). The nav shows whenever `collections.writing` has posts; `HIDE_NAV=true` is a failsafe that hides it. Add further env-backed flags here.
-- `nav.json` — `[{ label, url }]` array iterated in `base.njk` to render the nav. Add new top-level sections here. Current-page state is derived by comparing each item's `url` to `page.url` and setting `aria-current="page"` on the matching `<a>`.
+- `site.js` — env-driven config; exposes `site.hideNav` (reads `HIDE_NAV`, defaults `false`). The home page lists the 5 most recent posts whenever `collections.writing` has any; `HIDE_NAV=true` is a failsafe that hides that section. Add further env-backed flags here.
 
 ## Writing collection (`src/writing/`)
 
-- `writing.json` — directory data file; applies `layout: post.njk` to all files in the directory
+- `writing.json` — directory data file; applies `layout: post.njk` and `back` (→ `/writing/`) to all files in the directory
 - Collection defined in `eleventy.config.js` via `getFilteredByGlob("src/writing/*.md")` — glob-based (not tags) so `index.njk` is never self-included
 - `index.njk` overrides `layout: base.njk` in its own front matter to escape the directory data file's layout
 

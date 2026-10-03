@@ -38,32 +38,29 @@ body > footer {
 }
 
 body > header {
-  padding-block: 1.2rem;
-  border-bottom: 1px solid var(--border);
+  padding-block-start: 1.5rem;
 }
 
-nav {
-  display: flex;
-  gap: 1.5rem;
-}
-
-nav a,
-nav [aria-current="page"] {
-  color: var(--fg);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-nav a:hover {
-  color: var(--link);
-}
-
-nav [aria-current="page"] {
+.back {
   color: var(--muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--link);
 }
 
 main {
   padding-block: 2.5rem;
+}
+
+body > header + main {
+  padding-block-start: 1rem;
+}
+
+.recent {
+  margin-block-start: 2.5rem;
 }
 
 body > footer {
