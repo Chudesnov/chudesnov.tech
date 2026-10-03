@@ -13,7 +13,7 @@ Pages use `layout: base.njk` directly. Posts use `layout: post.njk`, which chain
 
 ## Data layer (`src/_data/`)
 
-- `site.js` — env-driven config; exposes `site.showNav` (reads `SHOW_NAV`, defaults `false`). The nav also shows whenever `collections.writing` has posts, so `SHOW_NAV` only forces it on for an empty blog. Add further env-backed flags here.
+- `site.js` — env-driven config; exposes `site.hideNav` (reads `HIDE_NAV`, defaults `false`). The nav shows whenever `collections.writing` has posts; `HIDE_NAV=true` is a failsafe that hides it. Add further env-backed flags here.
 - `nav.json` — `[{ label, url }]` array iterated in `base.njk` to render the nav. Add new top-level sections here. Current-page state is derived by comparing each item's `url` to `page.url` and setting `aria-current="page"` on the matching `<a>`.
 
 ## Writing collection (`src/writing/`)

@@ -9,7 +9,7 @@
 </head>
 <body>
   {# The nav only links to Writing, so it appears once there's something to read. #}
-  {% if site.showNav or collections.writing.length %}
+  {% if collections.writing.length and not site.hideNav %}
   <header>
     <nav>
       {% for item in nav %}
