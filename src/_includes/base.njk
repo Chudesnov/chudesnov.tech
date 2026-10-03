@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  {% if site.showNav %}
+  {# The nav only links to Writing, so it appears once there's something to read. #}
+  {% if collections.writing.length and not site.hideNav %}
   <header>
     <nav>
       {% for item in nav %}
