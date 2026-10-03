@@ -5,10 +5,14 @@ back:
   url: /
   label: Home
 ---
-<h1>Writing</h1>
 {% if collections.writing.length %}
+<div class="section-heading">
+  <h1>Writing</h1>
+  <a class="feed-link" href="/feed.xml" type="application/atom+xml">RSS</a>
+</div>
 {% set posts = collections.writing %}
 {% include "post-list.njk" %}
 {% else %}
+<h1>Writing</h1>
 <p>No posts yet.</p>
 {% endif %}
