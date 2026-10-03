@@ -7,4 +7,4 @@ templateEngineOverride: md
 
 I never really got the habit of writing regularly as an adult. The last time period I consistently and proactively posted through (rather than just reactively liking and retweeting something) was probably 12 years ago on my personal [diary.ru](https://diary.city) blog, which was before I got my first real engineering job. As soon as that happened, 90% of the words I type are messages to coworkers or code comments.
 
-This site is an attempt (not the first, likely not the last) to get back into the habit, this time in English.
+This site is an attempt (not the first, likely not the last) to get back into the habit, this time in English (which is now that 90%
