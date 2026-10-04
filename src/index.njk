@@ -20,7 +20,10 @@ layout: base.njk
 
 {% if collections.writing.length and not site.hideNav %}
 <section class="recent" aria-labelledby="recent-writing">
-  <h2 id="recent-writing">Writing</h2>
+  <div class="section-heading">
+    <h2 id="recent-writing">Writing</h2>
+    <a class="feed-link" href="/feed.xml" type="application/atom+xml">RSS</a>
+  </div>
   {% set posts = collections.writing.slice(0, 5) %}
   {% include "post-list.njk" %}
   {% if collections.writing.length > 5 %}

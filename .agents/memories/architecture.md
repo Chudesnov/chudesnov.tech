@@ -47,3 +47,7 @@ Main branch deployment is on statichost.eu and is not configured in this repo.
 ## Module system
 
 `eleventy.config.js` and `src/_data/*.js` use ES Modules (`export default`). `package.json` has `"type": "module"`. New `_data/*.js` files should be authored as ESM from the start.
+
+## Feed (`src/feed.njk`)
+
+Atom feed at `/feed.xml`, generated at build time from `collections.writing` (never committed). Uses `@11ty/eleventy-plugin-rss` filters only (`absoluteUrl`, `dateToRfc3339`, `htmlToAbsoluteUrls`) with `site.url` as the base. Each entry has `<published>` from `date` and `<updated>` from optional `updated` front matter (an ISO timestamp the CMS writes), falling back to `date`; see the `updatedDate` / `latestUpdate` filters in `eleventy.config.js`. `base.njk` adds `<link rel="alternate">` when there are posts, and the Writing headings (home section and `/writing/`) have an RSS link via `.section-heading`.
